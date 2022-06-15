@@ -21,7 +21,7 @@ you may keep a placeholder card or text asking the user to click on any button )
 
 <br/>
 
-Bonus:
+#### Bonus:
 
 • create a loading indicator to show that the API request is in progress
 
