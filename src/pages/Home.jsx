@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Loading } from "../components/index";
 import { getUsers, getUser } from "../redux/action";
+import Loading from "../components/Loading";
 
 function Home() {
   const dispatch = useDispatch();
   const { loading, allUsersData } = useSelector((state) => state.ListUsersData);
-  const { cardData } = useSelector((state) => state.SingleUserData);
+  const { cardLoading, cardData } = useSelector(
+    (state) => state.SingleUserData
+  );
 
   if (allUsersData !== undefined) var mainData = allUsersData.data;
   if (mainData !== undefined)
@@ -21,23 +23,25 @@ function Home() {
   return (
     <>
       {loading ? (
-        <Loading> </Loading>
+        <Loading />
       ) : (
         <div>
           <h1 className="pt-10 w-1/2 m-auto text-4xl font-bold text-black">
             Users
           </h1>
-
-          <div>
-            <Card
-              key={id}
-              avatar={avatar}
-              email={email}
-              first_name={first_name}
-              last_name={last_name}
-            />
-          </div>
-
+          {cardLoading ? (
+            <Loading />
+          ) : (
+            <div>
+              <Card
+                key={id}
+                avatar={avatar}
+                email={email}
+                first_name={first_name}
+                last_name={last_name}
+              />
+            </div>
+          )}
           <div className="w-1/2 m-auto flex flex-row justify-center">
             {total
               ? [...Array(total)].map((e, i) => (

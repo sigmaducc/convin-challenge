@@ -1,11 +1,8 @@
 import React from "react";
+import "./Loading.css";
 
 function Loading() {
-  return (
-    <div>
-      <i className="fa fa-spinner fa-spin"></i> Loading..
-    </div>
-  );
+  return <div className="loader"></div>;
 }
 
 export default Loading;

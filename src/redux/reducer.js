@@ -28,7 +28,7 @@ export const ListUsersAPIReducer = (
 
 export const SingleUserAPIReducer = (
     state = {
-        loding: true,
+        cardLoading: false,
         cardData: {
             id: 0,
             email: "coolguy@gmail.com",
@@ -41,11 +41,11 @@ export const SingleUserAPIReducer = (
 ) => {
     switch (action.type) {
         case USER_DATA_REQUEST:
-            return { loading: false };
+            return { cardLoading: true };
         case USER_DATA_SUCCESS:
-            return { loading: false, cardData: action.payload };
+            return { cardLoading: false, cardData: action.payload };
         case USER_DATA_FAIL:
-            return { loading: false, error: action.payload };
+            return { cardLoading: false, error: action.payload };
         default:
             return state;
     }
